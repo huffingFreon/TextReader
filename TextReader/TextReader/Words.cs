@@ -49,18 +49,45 @@ namespace TextReader
             }
         }
 
-        //Use Regex.Matches() within this class
         public Dictionary<string, int> Occurrence()
         {
             Dictionary<string, int> occurrences = new Dictionary<string, int>();
 
+            foreach(string word in wordList)
+            {
+                if(occurrences.ContainsKey(word))
+                {
+                    occurrences[word] += 1;
+                }
+                else
+                {
+                    occurrences.Add(word, 1);
+                }
+            }
+
             return occurrences;
         }
 
-        //Use Regex.Matches() here too if it works
         public Dictionary<char, int> CharOccurrence()
         {
             Dictionary<char, int> charOccurrences = new Dictionary<char, int>();
+
+            foreach(string word in wordList)
+            {
+                char[] brokenDownWords = word.ToCharArray();
+
+                foreach(char c in brokenDownWords)
+                {
+                    if(charOccurrences.ContainsKey(c))
+                    {
+                        charOccurrences[c] += 1;
+                    }
+                    else
+                    {
+                        charOccurrences.Add(c, 1);
+                    }
+                }
+            }
 
             return charOccurrences;
         }

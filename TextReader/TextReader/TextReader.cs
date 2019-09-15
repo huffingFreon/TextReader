@@ -9,19 +9,11 @@ namespace TextReader
         {
             string strPath = @"e:\Classes\CSCI 2910\Lab 2\TheMythOfSisyphus.txt";
             FileInfo file = new FileInfo(strPath);
+            string strTest = "the quick brown fox jumps over the lazy dog";
 
-            string text = File.ReadAllText(strPath);
-            string moreText = "Here,.,.,,,..,. is. a, sentence. with. too. much. punctuation.";
-            string[] symbols = { ".", "," };
+            Words word = new Words(strTest);
 
-            using(StreamReader sr = file.OpenText())
-            {
-                var s = "";
-                while((s = sr.ReadLine()) != null)
-                {
-                    Console.WriteLine(s);
-                }
-            }
+            Console.WriteLine(word.CharOccurrence()['e']);
         }
     }
 }
